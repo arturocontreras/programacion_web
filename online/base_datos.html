@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+         $('#form_control input').click(function(){
+		 
+           var valor = $(this).val();
+		   var value1 = document.getElementById("txtname").value;
+		   var value2 = document.getElementById("txtdirection").value;
+		   var value3 = document.getElementById("txtphone").value;
+		   var value4 = document.getElementById("txtemail").value;
+		   var value5 = document.getElementById("txtweb").value;
+		   var value6 = document.getElementById("txtentry").value;
+		   var value7 = document.getElementById("txtlatitud").value;
+		   var value8 = document.getElementById("txtlongitud").value;
+		   var value9 = document.getElementById("txtcontact").value;
+		   var value10 = document.getElementById("txtpriority").value;
+		   
+		    $.ajax({
+			type: 'GET',
+			url: 'mysql_query.php',
+			data: { boton: valor  , param1: value1 , param2 : value2 , param3 : value3 , param4 : value4 ,param5 : value5 ,param6 : value6 ,param7 : value7 ,param8 : value8 ,param9 : value9 ,param10 : value10},
+			success: function(response) {
+            $('#result').html(response);
+			}
+			});
+			
+			//alert("Holaaaa");
+							
+         });
+        });
+    </script>
+	
+	<script type="text/javascript">
+		//<!--
+		function goToURL(val){
+		location.href = val; 
+		}
+		//-->
+	</script>
+	
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+		
+  </head>
+  
+  
+  <body>
+
+	 <!------------------------------------------Funciones con la Base de Datos-----------------------------------------> 
+	 <form action="base_datos_v2.php" method = "get" id="form_control">
+			<fieldset>
+			<legend>Agregar empresas</legend>
+				<table>
+					<tr> 
+						<td> Name:
+							<input type = "text" name = "txtname" id = "txtname"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Direction:
+							<input type = "text" name = "txtdirection" id = "txtdirection"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Phone:
+							<input type = "text" name = "txtphone" id = "txtphone"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Email:
+							<input type = "text" name = "txtemail" id = "txtemail" />
+					</tr>
+					<tr> 
+						<td> Web:
+							<input type = "text" name = "txtweb" id = "txtweb"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Entry:
+							<input type = "text" name = "txtentry" id = "txtentry"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Latitud:
+							<input type = "text" name = "txtlatitud" id = "txtlatitud"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Longitud:
+							<input type = "text" name = "txtlongitud" id = "txtlongitud"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Contact:
+							<input type = "text" name = "txtcontact" id = "txtcontact"/>
+						</td>
+					</tr>
+					<tr> 
+						<td> Priority:
+							<input type = "text" name = "txtpriority" id = "txtpriority"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<input type = "button" name = "agregar" value = "agregar"> Agregar </input>
+						</td>
+						<td>
+							<input type = "button" name = "consultar" value = "consultar"> Consulta </input>
+						</td>
+						<td>
+							<input type = "button" name = "update" value = "update"> Update </input>
+						</td>
+						<td>
+							<input type = "button" name = "remover" value = "remover"> Remover </input>
+						</td>
+					</tr>
+				
+				</table>
+			</fieldset>
+		</form>
+		
+		Consola resultados:
+		<div id="result">
+		<!-- 	<input type="button" onclick="invocar()" name="invocar" value="invocar">-->	
+		</div>
+		
+		<BUTTON ONCLICK="javascript:goToURL('mapa.html')">Mapa</BUTTON>
+		
+  </body>
+  
+	
+</html>
